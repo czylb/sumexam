@@ -14,14 +14,46 @@
         var pics, banTitle, cir;
         pics = document.querySelectorAll('.pics');
         banTitle = document.querySelector('#banTitle');
-        cir = document.querySelectorAll('#cir');
-        console.log(cir.length);
+        slider = document.querySelector('.slider');
+        cir = document.querySelector('#cir');
+        same = document.querySelectorAll('.same');
         num = res.length;
         for(var i = 0; i < num; i ++) {
-            var flag = 0;
-            pics[i].src = res[i].imgURL;
-            banTitle.innerHTML = res[flag].title;
-        }           
+            var newDiv = document.createElement("div");
+            newDiv.className = "same";
+            var newLi = document.createElement("li");
+            slider.appendChild(newDiv);
+            cir.appendChild(newLi);
+            var newImg = document.createElement("img");
+            newImg.src = res[i].imgURL;
+            newDiv.appendChild(newImg);
+        } 
+
+        var cirs = document.querySelectorAll('#cir li'),
+            flag = 0,
+            index = cirs.length;
+        var time = setInterval(animate,3000);
+            cirs[0].className = 'show';
+            slider.style.width = index * 640 / 64 + 'rem';
+            console.log(slider.style.width);
+
+        var animate = function (val) { //轮播函数
+            if(val != null) {
+                flag = val - 2;
+            }
+            if(flag < index - 1) {
+                flag++; 
+            }
+            else {
+                flag = 0;
+            } 
+            slider.style.left = flag * -640 / 64 + 'rem';
+            for (var i = 0; i < cirs.length; i++) {
+                cirs[i].className = '';
+            }
+            cirs[flag].className = 'show';
+        }
     }
 
+    
 }());

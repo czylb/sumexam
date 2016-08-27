@@ -1,4 +1,10 @@
 ;(function () {
+    // var fresh = 5;
+    // // document.body.addEventListener("touchmove", function (e) {
+    //     if (e.targetTouches[0].clientY > 144) {
+    //         fresh++;
+    //     }
+    // })
     var url = '/news?num=5';//新闻接口
     var xhr = new XMLHttpRequest();
     xhr.open('get', url, true);
@@ -26,9 +32,9 @@
             description[i].innerHTML = res[i].description;
             if (res[i].post) {
                 if (res[i].post > 10000) {
-                    number[i].innerHTML = parseInt(res[i].post / 10000) + "万人跟帖";
+                    number[i].innerHTML = parseInt(res[i].post / 10000) + "万跟帖";
                 } else {
-                    number[i].innerHTML = res[i].post + "人跟帖";
+                    number[i].innerHTML = res[i].post + "跟帖";
                 }
             }
             if (res[i].type) {

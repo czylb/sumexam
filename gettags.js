@@ -15,7 +15,8 @@
         info = document.querySelectorAll('.info');
         info1 = document.querySelectorAll('.info1');
         label = document.querySelectorAll('.label');
-        for(var i = 0; i < 24; i ++) {
+        var num = res.avaliable.length;
+        for(var i = 0; i < num; i ++) {
             info[i].innerHTML = res.avaliable[i].name;
             info1[i].innerHTML = res.added[i].name;
             label[i].innerHTML = res.added[i].name; 
